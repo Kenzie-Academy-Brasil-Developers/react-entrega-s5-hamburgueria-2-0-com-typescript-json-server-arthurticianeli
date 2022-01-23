@@ -6,7 +6,7 @@ import Details from "../assets/details.png";
 
 function HeroCall() {
   return (
-    <Stack spacing={"30px"}>
+    <Stack spacing={"30px"} display={"flex"} alignItems={"center"} my={"30px"}>
       <Image src={Logo} w={"250px"} />
       <Flex
         maxW={"350px"}
@@ -31,7 +31,11 @@ function HeroCall() {
           ingredientes.
         </Text>
       </Flex>
-      <Image src={Details} w={"250px"} />
+      <Image
+        src={Details}
+        w={"250px"}
+        display={{ base: "none", lg: "block" }}
+      />
     </Stack>
   );
 }

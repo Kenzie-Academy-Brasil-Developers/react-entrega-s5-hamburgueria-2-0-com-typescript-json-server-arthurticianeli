@@ -8,13 +8,15 @@ import {
 import { whiten } from "@chakra-ui/theme-tools";
 
 import { FaSearch } from "react-icons/fa";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 interface InputProps extends ChakraInputProps {
   hide: boolean;
   setShowSearch: (status: boolean) => void;
+  handleChange: (value: string) => void;
 }
 
-const InputSearch = ({ hide, setShowSearch }: InputProps) => {
+const InputSearch = ({ hide, setShowSearch, handleChange }: InputProps) => {
   return (
     <>
       {hide ? (
@@ -44,19 +46,21 @@ const InputSearch = ({ hide, setShowSearch }: InputProps) => {
               _placeholder: { color: "gray.300" },
               border: "#333 2px solid",
             }}
+            onChange={(event) => handleChange(event.target.value)}
           />
         </InputGroup>
       ) : (
         <InputGroup w="300px" h="60px">
           <InputRightElement mt={"10px"} mr={"10px"}>
             <Button
-              bg={"primary"}
+              bg={"transparent"}
               rounded={"8px"}
               _hover={{ bg: whiten("primary", 50) }}
               padding={"0"}
               onClick={() => setShowSearch(false)}
+              color="primary"
             >
-              <FaSearch color="white" />
+              <AiOutlineCloseCircle size={30} />
             </Button>
           </InputRightElement>
           <Input
@@ -74,6 +78,7 @@ const InputSearch = ({ hide, setShowSearch }: InputProps) => {
               _placeholder: { color: "gray.300" },
               border: "#333 2px solid",
             }}
+            onChange={(event) => handleChange(event.target.value)}
           />
         </InputGroup>
       )}
